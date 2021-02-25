@@ -38,8 +38,9 @@ The winner is the player who first achieves a consecutive alignment (horizontal,
 
 ### Extra information:
 
-The use of third-party libraries / frameworks is completely free.
-No AI is present, each player plays one after the other.
+The use of third-party libraries / frameworks is authorised.
+
+No AI is needed, each player plays one after the other.
 
 ## Backend
 
