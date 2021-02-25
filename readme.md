@@ -177,4 +177,4 @@ For example to obtain all the entries of the musics corresponding to U2:
 
 https://itunes.apple.com/search?term=U2&media=music
 
-You are free in the choice of library and display but you must return a project coded in Swift for iOS or Kotlin/Java for Android. You are also free regarding the display of data, the layout and navigation in the app.
+You are free in the choice of library and display but you must return a project coded in Swift for iOS or Kotlin for Android. You are also free regarding the display of data, the layout and navigation in the app.
