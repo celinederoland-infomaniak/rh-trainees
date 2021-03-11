@@ -1,19 +1,23 @@
 package com.titouan.infomaniakapp.features
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.titouan.infomaniakapp.data.models.Music
 import com.titouan.infomaniakapp.data.repository.ItunesRepository
-import kotlinx.coroutines.launch
 
 class ItunesMusicsViewModel(
     private val itunesRepository: ItunesRepository
 ): ViewModel() {
 
-    fun searchMusics(term: String) {
-        viewModelScope.launch {
-            val musics = itunesRepository.searchMusics(term)
-            Log.d("Musics", "Found ${musics.size}")
+    private val searchTrigger = MutableLiveData<String>()
+
+    val results: LiveData<List<Music>> =
+        searchTrigger.switchMap { term ->
+            liveData {
+                emit(itunesRepository.searchMusics(term))
+            }
         }
+
+    fun searchMusics(term: String) {
+        searchTrigger.value = term
     }
 }

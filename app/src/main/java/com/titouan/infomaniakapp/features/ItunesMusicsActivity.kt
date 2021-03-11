@@ -1,9 +1,11 @@
 package com.titouan.infomaniakapp.features
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.titouan.infomaniakapp.R
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -16,6 +18,7 @@ class ItunesMusicsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setupSearchButton()
+        setupResultsRecyclerView()
     }
 
     private fun setupSearchButton() {
@@ -24,6 +27,16 @@ class ItunesMusicsActivity : AppCompatActivity() {
 
         searchButton.setOnClickListener {
             viewModel.searchMusics(searchField.text.toString())
+        }
+    }
+
+    private fun setupResultsRecyclerView() {
+        val adapter = MusicsSearchResultAdapter()
+        findViewById<RecyclerView>(R.id.search_results).adapter = adapter
+
+        viewModel.results.observe(this) { musics ->
+            adapter.setData(musics)
+            Log.d("Musics", "Found ${musics.size}")
         }
     }
 }
