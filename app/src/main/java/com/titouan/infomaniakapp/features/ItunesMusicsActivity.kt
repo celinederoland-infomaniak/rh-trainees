@@ -26,6 +26,7 @@ class ItunesMusicsActivity : AppCompatActivity() {
         val searchButton = findViewById<Button>(R.id.search_button)
 
         searchButton.setOnClickListener {
+            hideKeyboard()
             viewModel.searchMusics(searchField.text.toString())
         }
     }
@@ -36,7 +37,6 @@ class ItunesMusicsActivity : AppCompatActivity() {
 
         viewModel.results.observe(this) { musics ->
             adapter.setData(musics)
-            Log.d("Musics", "Found ${musics.size}")
         }
     }
 }
