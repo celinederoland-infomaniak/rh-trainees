@@ -1,8 +1,10 @@
-package com.titouan.infomaniakapp.features
+package com.titouan.infomaniakapp.features.search
 
 import androidx.lifecycle.*
 import com.titouan.infomaniakapp.data.models.Music
 import com.titouan.infomaniakapp.data.repository.ItunesRepository
+import com.titouan.infomaniakapp.features.utils.Resource
+import java.lang.Exception
 
 class ItunesMusicsViewModel(
     private val itunesRepository: ItunesRepository
@@ -10,10 +12,15 @@ class ItunesMusicsViewModel(
 
     private val searchTrigger = MutableLiveData<String>()
 
-    val results: LiveData<List<Music>> =
+    val results: LiveData<Resource<List<Music>>> =
         searchTrigger.switchMap { term ->
             liveData {
-                emit(itunesRepository.searchMusics(term))
+                emit(Resource.Loading())
+                try {
+                    emit(Resource.Success(itunesRepository.searchMusics(term)))
+                } catch (e: Exception) {
+                    emit(Resource.Error<List<Music>>(e))
+                }
             }
         }
 

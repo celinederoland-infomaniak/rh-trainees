@@ -1,6 +1,6 @@
 package com.titouan.infomaniakapp.features.di
 
-import com.titouan.infomaniakapp.features.ItunesMusicsViewModel
+import com.titouan.infomaniakapp.features.search.ItunesMusicsViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

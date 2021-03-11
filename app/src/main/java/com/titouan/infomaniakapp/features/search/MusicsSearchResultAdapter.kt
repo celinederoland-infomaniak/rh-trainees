@@ -1,10 +1,11 @@
-package com.titouan.infomaniakapp.features
+package com.titouan.infomaniakapp.features.search
 
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.titouan.infomaniakapp.R
 import com.titouan.infomaniakapp.data.models.Music
+import com.titouan.infomaniakapp.features.inflate
 
 class MusicsSearchResultAdapter :
     RecyclerView.Adapter<MusicsSearchResultAdapter.MusicViewHolder>() {

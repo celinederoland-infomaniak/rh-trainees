@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InfomaniakApp">
-        <activity android:name=".features.ItunesMusicsActivity">
+        <activity android:name=".features.search.ItunesMusicsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
