@@ -1,7 +1,7 @@
 request_body = {
   "a.*.y.t": "integer",
   "a.*.y.u": "integer",
-  # "a.*.z": "object|keys:w,o",
+  "a.*.z": "object|keys:w,o",
   "b": "array",
   "b.c": "string",
   "b.d": "object",

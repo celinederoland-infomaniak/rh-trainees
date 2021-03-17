@@ -27,7 +27,7 @@ def add_leaf(json, key, validators):
         if validators == "array":
             add_tree_part(json, TYPE_OBJECT, key)
         elif not key in json["properties"]:
-            json["properties"][key] = {"type": "leaf", "validators": [ v for v in validators.split('|')] }
+            json["properties"][key] = {"type": "leaf", "validators": [ v for v in validators.split('|')] if validators else [] }
 
 def expand_validator(json):
     output = {}
@@ -47,10 +47,14 @@ def expand_validator(json):
                     add_tree_part(tmp, TYPE_OBJECT, key[i])
                     output[key[i]] = tmp['properties'][key[i]]
                 elif i == len(key)-1:
-                    if json[keys] != "object":
-                        add_leaf(latest, key[i], json[keys])
-                    elif json[keys] == "object":
+                    if json[keys] == "object":
                         latest = add_tree_part(latest, TYPE_OBJECT, key[i])
+                    elif json[keys].split('|')[0] == "object":
+                        latest = add_tree_part(latest, TYPE_OBJECT, key[i])
+                        objs = json[keys].split(':')[1].split(',')
+                        [ add_leaf(latest, obj, None) for obj in objs ]
+                    else:
+                        add_leaf(latest, key[i], json[keys])
                 else:
                     if not key[i] in latest:
                         add_tree_part(latest, TYPE_OBJECT, key[i])
