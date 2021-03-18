@@ -1,5 +1,21 @@
 from utils import printj, expand_validator
 from mocks import *
+from flask import Flask, request
+import json
 
-printj(request_body)
-printj(expand_validator(request_body))
+
+app = Flask(__name__)
+
+@app.route('/')
+def root():
+    return "Nothing to see here 😋"
+
+@app.route('/expand_validator', methods = ['POST'])
+def expand_validator_route():
+    try:
+        return { "ok": True, "data": expand_validator(request.json) }
+    except Exception:
+        return { "ok": False, "reason": "The input wasn't in the expected format." }
+
+if __name__ == '__main__':
+    app.run()
