@@ -1,13 +1,15 @@
 from utils import printj, expand_validator
-from mocks import *
 from flask import Flask, request
 import json
 
-
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def root():
+    return "Nothing to see here 😋"
+
+@app.route('/expand_validator', methods = ['GET'])
+def expand_validator_get():
     return "Nothing to see here 😋"
 
 @app.route('/expand_validator', methods = ['POST'])
