@@ -18,4 +18,4 @@ def expand_validator_route():
         return { "ok": False, "reason": "The input wasn't in the expected format." }
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

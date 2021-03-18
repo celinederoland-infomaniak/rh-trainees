@@ -1,0 +1,10 @@
+version: "3"
+services:
+  rh-trainees:
+    build: .
+    container_name: rh-trainees
+    restart: unless-stopped
+    ports:
+            - 5001:5000/tcp
+    volumes:
+            - ../app:/data
