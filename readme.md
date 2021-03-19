@@ -27,7 +27,7 @@ As an example :
 ```json
 {
 	"a.*.b": "string",
-	"x.y.z": "integer|max:23",
+	"x.y.z": "integer|max:23"
 }
 ```
 
