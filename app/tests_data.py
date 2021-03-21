@@ -30,8 +30,14 @@ data_in = [
 
     # item 5
     {
-     "a.*.*.b.*": "string"
+	   "b": "string"
     },
+
+    # item 6
+    {
+	   "a.*.*.b.*": "string",
+	   "x.y.z": "integer|max:23"
+    }
 
 ]
 
@@ -184,6 +190,10 @@ data_out = [
             }
         },
         "x": {
+            "type": "object",
+            "validators": [
+                "object"
+            ],
             "properties": {
                 "y": {
                     "type": "object",
@@ -219,30 +229,72 @@ data_out = [
 
     # item 5
     {
-       "a":{
-          "type":"array",
-          "validators": ["array"],
-          "items":{
-             "type":"array",
-             "validators": ["array"],
-             "items":{
-                "type":"object",
-                "validators": ["object"],
-                "properties":{
-                   "b":{
-                      "type":"array",
-                      "validators": ["array"],
-                      "items":{
-                         "type":"leaf",
-                         "validators":[
-                            "string"
-                         ]
-                      }
-                   }
+        "b": {
+            "type": "leaf",
+            "validators": [
+                "string"
+            ]
+        }
+    },
+
+    # item 6
+    {
+        "a": {
+            "type": "array",
+            "validators": [
+                "array"
+            ],
+            "items": {
+                "type": "array",
+                "validators": [
+                    "array"
+                ],
+                "items": {
+                    "type": "object",
+                    "validators": [
+                        "object"
+                    ],
+                    "properties": {
+                        "b": {
+                            "type": "array",
+                            "validators": [
+                                "array"
+                            ],
+                            "items": {
+                                "type": "leaf",
+                                "validators": [
+                                    "string"
+                                ]
+                            }
+                        }
+                    }
                 }
-             }
-          }
-       }
+            }
+        },
+        "x": {
+            "type": "object",
+            "validators": [
+                "object"
+            ],
+            "properties": {
+                "y": {
+                    "type": "object",
+                    "validators": [
+                        "object"
+                    ],
+                    "properties": {
+                        "z": {
+                            "type": "leaf",
+                            "validators": [
+                                "integer",
+                                "max:23"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
     }
+
 
 ]
