@@ -2,26 +2,37 @@
 data_in = [
     # item 1
     {
-    "a.*.y.t": "integer",
-    "a.*.y.u": "integer",
-    "a.*.z": "object|keys:w,o",
-    "b": "array",
-    "b.c": "string",
-    "b.d": "object",
-    "b.d.e": "integer|min:5",
-    "b.d.f": "string"
+        "a.*.y.t": "integer",
+        "a.*.y.u": "integer",
+        "a.*.z": "object|keys:w,o",
+        "b": "array",
+        "b.c": "string",
+        "b.d": "object",
+        "b.d.e": "integer|min:5",
+        "b.d.f": "string"
     },
 
     # item 2
     {
-      "a.*.b": "object|keys:c,d"
+        "a.*.b": "object|keys:c,d"
     },
 
     # item 3
     {
-      "a.*.b": "string",
-      "x.y.z": "integer|max:23",
+        "a.*.b": "string",
+        "x.y.z": "integer|max:23",
     },
+
+    # item 4
+    {
+        "*.b": "string"
+    },
+
+    # item 5
+    {
+     "a.*.*.b.*": "string"
+    },
+
 ]
 
 # wanted result
@@ -192,4 +203,46 @@ data_out = [
             }
         }
     },
+
+    # item 4
+    {
+       "type":"object",
+       "properties":{
+          "b":{
+             "type":"leaf",
+             "validators":[
+                "string"
+             ]
+          }
+       }
+    },
+
+    # item 5
+    {
+       "a":{
+          "type":"array",
+          "validators": ["array"],
+          "items":{
+             "type":"array",
+             "validators": ["array"],
+             "items":{
+                "type":"object",
+                "validators": ["object"],
+                "properties":{
+                   "b":{
+                      "type":"array",
+                      "validators": ["array"],
+                      "items":{
+                         "type":"leaf",
+                         "validators":[
+                            "string"
+                         ]
+                      }
+                   }
+                }
+             }
+          }
+       }
+    }
+
 ]
