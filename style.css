@@ -1,0 +1,98 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'arial';
+  text-align: center;
+
+}
+
+h1,h3{
+  color: black;
+}
+
+h1{
+position: absolute;
+top: 0;
+left:50%;
+transform: translate(-50%);
+font-size: 3rem;
+}
+
+h3{
+position: absolute;
+top: 3rem;
+left:50%;
+transform: translate(-50%);
+font-size: 2rem;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.container{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 600px;
+  height: 520px;
+  top: 6rem;
+  background: rgb(64, 133, 224);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: .5rem;
+}
+
+.container table tr td{
+  width: 90px;
+  height: 80px;
+  border: 2px solid rgb(64, 133, 224);
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.buttons{
+  height: 2px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.reset, .dark {
+  position: relative;
+  top: 35rem;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding: 0.3rem;
+  background-color: rgb(64, 133, 224);
+  border-radius: 10px;
+  cursor: pointer; 
+}
+
+/* dark mode */
+
+body.dark-mode {
+  background-color: rgb(54, 54, 54);
+  color: #eee;
+}
+
+body.dark-mode h1,h3{
+    color:rgb(255, 255, 255)
+}
+
+@media screen and (max-width: 600px){
+  .container{
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      width: 90%;
+      height: 520px;
+      top: 9rem;
+      border: 2px solid black;
+      padding: .5rem;
+  
+  }
+  
+}
