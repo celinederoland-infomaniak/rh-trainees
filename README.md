@@ -2,4 +2,4 @@
 
 
 
-You can find the .apk in app->build->outputs->apk
+You can find the .apk in the main folder
